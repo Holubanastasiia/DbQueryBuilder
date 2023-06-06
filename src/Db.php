@@ -20,8 +20,8 @@ class Db implements DbInterface
             $this->connection = new PDO($dsn, $user, $password, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ]);
-        } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), $e->getCode(), $e);
+        } catch (\Throwable $e) {
+            echo $e;
         }
     }
 
@@ -30,11 +30,10 @@ class Db implements DbInterface
         try {
             $statement = $this->connection->prepare($sql);
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo $e;
         }
-        return $result;
+        return [];
     }
 }
