@@ -1,0 +1,15 @@
+{
+    "name": "anastasiia/db-query-builder",
+    "description": "DB query builder",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Anastasiia\\DbQueryBuilder\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+      "ext-pdo": "*"
+    }
+}
